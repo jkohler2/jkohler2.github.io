@@ -3,79 +3,300 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CATT Codex training</title>
+    <title>CATT Codex | Retro Pop Culture Almanac</title>
     <style>
       :root {
         color-scheme: light;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: #f6f7fb;
-        color: #1f2430;
+        font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
+        background: #f2ecdd;
+        color: #1c1814;
+        scroll-behavior: smooth;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       body {
         margin: 0;
-        min-height: 100vh;
+        background: #f2ecdd;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .site-frame {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 20px 60px;
+      }
+
+      header {
+        background: #221b15;
+        color: #f7f1e1;
+        padding: 32px 20px 24px;
+        text-align: center;
+        border-bottom: 5px solid #d18a2c;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      header p {
+        margin: 12px auto 0;
+        max-width: 760px;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #f3d7a5;
+      }
+
+      .top-nav {
         display: flex;
         justify-content: center;
-        align-items: center;
-        padding: 32px 20px;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
       }
 
-      main {
-        max-width: 720px;
-        background: #ffffff;
-        border-radius: 20px;
-        padding: 40px;
-        box-shadow: 0 24px 60px rgba(31, 36, 48, 0.12);
+      .top-nav a {
+        text-decoration: none;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
       }
 
-      h1 {
-        margin: 0 0 16px;
-        font-size: clamp(2.2rem, 4vw, 3rem);
-        letter-spacing: -0.02em;
+      .top-nav a:hover {
+        background: #d18a2c;
+        color: #221b15;
       }
 
-      p {
-        margin: 0 0 16px;
-        font-size: 1.1rem;
+      .banner {
+        margin: 28px auto 0;
+        background: #fff6e1;
+        border: 2px dashed #d18a2c;
+        border-radius: 14px;
+        padding: 20px 24px;
+        box-shadow: 0 18px 32px rgba(28, 24, 20, 0.08);
+      }
+
+      .banner h2 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: #7d3c00;
+      }
+
+      .banner p {
+        margin: 0;
         line-height: 1.7;
       }
 
-      .badge {
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr minmax(240px, 0.7fr);
+        gap: 28px;
+        margin-top: 28px;
+      }
+
+      .post {
+        background: #ffffff;
+        border: 2px solid #e2cfb0;
+        border-radius: 14px;
+        padding: 22px;
+        margin-bottom: 22px;
+        box-shadow: 0 14px 24px rgba(28, 24, 20, 0.08);
+      }
+
+      .post h3 {
+        margin: 0 0 8px;
+        font-size: 1.5rem;
+        color: #2b1d0b;
+      }
+
+      .post .meta {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #7b6a52;
+        margin-bottom: 12px;
+      }
+
+      .post p {
+        margin: 0 0 12px;
+        line-height: 1.7;
+      }
+
+      .post a {
+        color: #7d3c00;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      aside {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .side-card {
+        background: #fff6e1;
+        border: 2px solid #d18a2c;
+        border-radius: 14px;
+        padding: 18px;
+      }
+
+      .side-card h4 {
+        margin: 0 0 10px;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        color: #7d3c00;
+      }
+
+      .pill {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        margin-top: 16px;
-        padding: 8px 16px;
+        padding: 6px 12px;
         border-radius: 999px;
-        background: #eef2ff;
-        color: #3947c9;
-        font-weight: 600;
-        font-size: 0.95rem;
+        border: 2px solid #221b15;
+        background: #f7ddb3;
+        font-weight: 700;
+        font-size: 0.85rem;
       }
 
-      .badge span {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #5b6bff;
+      footer {
+        margin-top: 40px;
+        padding: 26px 20px 36px;
+        text-align: center;
+        background: #221b15;
+        color: #f7f1e1;
+        border-top: 5px solid #d18a2c;
+      }
+
+      footer p {
+        margin: 0;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>CATT Codex training</h1>
+    <header>
+      <h1>CATT Codex</h1>
       <p>
-        Welcome! This is the placeholder page for the CATT Codex training website. Use
-        this space to preview upcoming content, share program details, or highlight the
-        learning journey ahead.
+        A retro pop-culture zine packed with nostalgia, oddball deep dives, and the kind of
+        late-night rabbit holes you used to fall into on the early web.
       </p>
-      <p>
-        Replace this text with your final curriculum, schedule, and resources when
-        everything is ready to launch.
-      </p>
-      <div class="badge"><span></span>Coming soon</div>
-    </main>
+      <nav class="top-nav">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#countdowns">Countdowns</a>
+        <a href="#almanac">Almanac</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <div class="site-frame">
+      <section id="home" class="banner">
+        <h2>Today’s Headline</h2>
+        <p>
+          Welcome to the CATT Codex. We track the lost toys, forgotten commercials, and
+          eccentric pop-culture stories that still spark the imagination—served with cozy
+          commentary and a little mystery.
+        </p>
+      </section>
+
+      <main class="layout">
+        <section>
+          <article id="features" class="post">
+            <h3>The Saturday Morning Power Block</h3>
+            <div class="meta">Feature • 7-minute read</div>
+            <p>
+              Remember the adrenaline rush of flipping channels before the opening theme
+              hit? We’re rebuilding a perfect three-hour block, complete with snack breaks
+              and the exact commercials that defined the era.
+            </p>
+            <a href="#features">Continue reading →</a>
+          </article>
+
+          <article id="countdowns" class="post">
+            <h3>Top 10 Plastic Toys That Smelled Like Summer</h3>
+            <div class="meta">Countdown • 10 picks</div>
+            <p>
+              The water blasters, neon squirt guns, and pool toys that owned every backyard
+              afternoon. We ranked the most iconic (and absolutely chaotic) picks.
+            </p>
+            <a href="#countdowns">See the full countdown →</a>
+          </article>
+
+          <article id="almanac" class="post">
+            <h3>Commercial Break: 1994 Edition</h3>
+            <div class="meta">Almanac • 5 highlights</div>
+            <p>
+              A lovingly curated stack of jingles, toy ads, and snack commercials that still
+              live rent-free in our heads. Press play, rewind, and relive the golden age.
+            </p>
+            <a href="#almanac">Watch the reel →</a>
+          </article>
+
+          <article class="post">
+            <h3>Arcade Corner: Cabinets We Miss</h3>
+            <div class="meta">Feature • 4-minute read</div>
+            <p>
+              The glow of the marquee, the clack of the buttons, the high-score chase. We
+              spotlight the cabinets that kept us feeding quarters long after the mall closed.
+            </p>
+            <a href="#features">Tour the arcade →</a>
+          </article>
+        </section>
+
+        <aside>
+          <div class="side-card" id="about">
+            <h4>About the Codex</h4>
+            <p>
+              CATT Codex is a love letter to pop culture nostalgia: curated, story-driven,
+              and bursting with those strange little details you forgot you remembered.
+            </p>
+          </div>
+
+          <div class="side-card">
+            <h4>Weekly Countdown</h4>
+            <p>Every Friday we rank the toys, snacks, TV tropes, and mall memories.</p>
+            <span class="pill">Countdown #52 live</span>
+          </div>
+
+          <div class="side-card">
+            <h4>Recent Posts</h4>
+            <ul>
+              <li><a href="#almanac">5 VHS Covers That Deserve Museum Frames</a></li>
+              <li><a href="#features">The Best Video Game Cheat Codes Ever</a></li>
+              <li><a href="#countdowns">Pizza Place Prizes: A Photo Tour</a></li>
+            </ul>
+          </div>
+
+          <div class="side-card">
+            <h4>Newsletter</h4>
+            <p>Get the nostalgia digest every Friday with brand new features.</p>
+            <span class="pill">Sign up →</span>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <footer>
+      <p>© 2024 CATT Codex. Built for fans of retro pop culture and cozy internet corners.</p>
+    </footer>
   </body>
 </html>
