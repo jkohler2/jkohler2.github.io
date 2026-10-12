@@ -26,6 +26,24 @@
         color: inherit;
       }
 
+      a:focus-visible {
+        outline: 3px solid #7d3c00;
+        outline-offset: 4px;
+      }
+
+      /* Keep section headings available to screen readers without changing the layout. */
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+      }
+
       .site-frame {
         max-width: 1120px;
         margin: 0 auto;
@@ -76,6 +94,12 @@
       .top-nav a:hover {
         background: #d18a2c;
         color: #221b15;
+      }
+
+      .top-nav a:focus-visible {
+        background: #d18a2c;
+        color: #221b15;
+        outline-color: #f7f1e1;
       }
 
       .banner {
@@ -153,7 +177,7 @@
         padding: 18px;
       }
 
-      .side-card h4 {
+      .side-card h3 {
         margin: 0 0 10px;
         text-transform: uppercase;
         font-size: 0.95rem;
@@ -183,6 +207,12 @@
 
       footer p {
         margin: 0;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        :root {
+          scroll-behavior: auto;
+        }
       }
 
       @media (max-width: 900px) {
@@ -219,7 +249,8 @@
       </section>
 
       <main class="layout">
-        <section>
+        <section aria-labelledby="stories-heading">
+          <h2 id="stories-heading" class="visually-hidden">Latest Stories</h2>
           <article id="features" class="post">
             <h3>The Saturday Morning Power Block</h3>
             <div class="meta">Feature • 7-minute read</div>
@@ -262,9 +293,10 @@
           </article>
         </section>
 
-        <aside>
+        <aside aria-labelledby="sidebar-heading">
+          <h2 id="sidebar-heading" class="visually-hidden">More from the Codex</h2>
           <div class="side-card" id="about">
-            <h4>About the Codex</h4>
+            <h3>About the Codex</h3>
             <p>
               CATT Codex is a love letter to pop culture nostalgia: curated, story-driven,
               and bursting with those strange little details you forgot you remembered.
@@ -272,13 +304,13 @@
           </div>
 
           <div class="side-card">
-            <h4>Weekly Countdown</h4>
+            <h3>Weekly Countdown</h3>
             <p>Every Friday we rank the toys, snacks, TV tropes, and mall memories.</p>
             <span class="pill">Countdown #52 live</span>
           </div>
 
           <div class="side-card">
-            <h4>Recent Posts</h4>
+            <h3>Recent Posts</h3>
             <ul>
               <li><a href="#almanac">5 VHS Covers That Deserve Museum Frames</a></li>
               <li><a href="#features">The Best Video Game Cheat Codes Ever</a></li>
@@ -287,7 +319,7 @@
           </div>
 
           <div class="side-card">
-            <h4>Newsletter</h4>
+            <h3>Newsletter</h3>
             <p>Get the nostalgia digest every Friday with brand new features.</p>
             <span class="pill">Sign up →</span>
           </div>
